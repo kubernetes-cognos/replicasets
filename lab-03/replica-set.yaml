@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  labels:
+    env: produccion
+    tipo: frontend
+  name: web-app-rs
+spec:
+  template:
+    metadata:
+      labels:
+        tipo: frontend
+      name: web-app-pod
+    spec:
+      containers:
+      - image: solutionshakan/pagina:v1
+        name: web-app-container
+  replicas: 3
+  selector:
+    matchLabels:
+      tipo: frontend
